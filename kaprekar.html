@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" media="all" href="styleCode.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik:wght@300&display=swap" rel="stylesheet">
+<title>Constante de Kaprekar con Desarrollo</title>
+<script>
+  function calcularKaprekar() {
+    var numero = parseInt(document.getElementById("numero").value);
+    var resultado = document.getElementById("resultado");
+    var desarrollo = document.getElementById("desarrollo");
+
+    if (isNaN(numero)) {
+      resultado.innerHTML = "Ingresa un número válido.";
+      desarrollo.innerHTML = "";
+      return;
+    }
+    if (!/^\d{4}$/.test(numero)) {
+      alert("Ingresa una cifra numérica de 4 dígitos válida.");
+      return false;
+    }
+
+    var contador = 0;
+    var pasos = [];
+
+    while (numero !== 6174 && contador < 10) {
+      var numeroAscendente = ordenarDigitos(numero, true);
+      var numeroDescendente = ordenarDigitos(numero, false);
+      numero = numeroDescendente - numeroAscendente;
+      contador++;
+      pasos.push(numeroDescendente + " - " + numeroAscendente + " = " + numero);
+    }
+
+    if (contador === 10) {
+      resultado.innerHTML = "No se alcanzó la constante de Kaprekar en 10 iteraciones.";
+    } else {
+      resultado.innerHTML = "La constante de Kaprekar se alcanzó en " + contador + " iteraciones.";
+    }
+
+    desarrollo.innerHTML = "Desarrollo paso a paso:<br>" + pasos.join("<br>");
+  }
+
+  function ordenarDigitos(numero, ascendente) {
+    var digitos = numero.toString().split("").map(Number);
+    digitos.sort(function(a, b) {
+      return ascendente ? a - b : b - a;
+    });
+    return parseInt(digitos.join(""));
+  }
+</script>
+</head>
+<body>
+<h1>Constante de Kaprekar</h1>
+<p>Ingresa un número y calcularemos cuántas iteraciones se necesitan para alcanzar la constante de Kaprekar (6174) y mostraremos el desarrollo.</p>
+<label for="numero">Número: </label>
+<input type="text" id="numero" name="numero">
+<button onclick="calcularKaprekar()">Calcular</button>
+<p id="resultado"></p>
+<p id="desarrollo"></p>
+<footer>
+  <a id="atras" href="index.html">&#x2302;</a>
+</footer>
+</body>
+</html>

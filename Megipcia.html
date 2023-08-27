@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" media="all" href="styleCode.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik:wght@300&display=swap" rel="stylesheet">
+<title>Método Egipcio de Multiplicación</title>
+<script>
+  function resolverMultiplicacionEgipcia() {
+    var multiplicando = parseInt(document.getElementById("multiplicando").value);
+    var multiplicador = parseInt(document.getElementById("multiplicador").value);
+    var resultado = document.getElementById("resultado");
+
+    if (isNaN(multiplicando) || isNaN(multiplicador)) {
+      resultado.innerHTML = "Ingresa números válidos.";
+      return;
+    }
+
+    var descomposiciones = [];
+    var suma = 0;
+
+    while (multiplicador > 0) {
+      if (multiplicador % 2 === 1) {
+        descomposiciones.push(multiplicando + " x " + multiplicador);
+        suma += multiplicando;
+      }
+      multiplicando *= 2;
+      multiplicador = Math.floor(multiplicador / 2);
+    }
+
+    resultado.innerHTML = "Descomposición: " + descomposiciones.join(" + ") + "<br>Resultado: " + suma;
+  }
+</script>
+</head>
+<body>
+<h1>Método Egipcio de Multiplicación</h1>
+<p>Ingresa dos números y utilizaremos el método egipcio de multiplicación para calcular su producto.</p>
+<label for="multiplicando">Multiplicando: </label>
+<input type="text" id="multiplicando" name="multiplicando">
+<br>
+<label for="multiplicador">Multiplicador: </label>
+<input type="text" id="multiplicador" name="multiplicador">
+<br>
+<button onclick="resolverMultiplicacionEgipcia()">Calcular</button>
+<p id="resultado"></p>
+<footer><a href="index.html">&#x2302;</a></footer>
+</body>
+</html>

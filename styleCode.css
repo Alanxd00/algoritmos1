@@ -1,0 +1,66 @@
+body {
+    background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  height: 100vh;
+}
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+h1{
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 90px;
+  text-align: center;
+}
+p{
+  font-family: 'Rubik', sans-serif;
+  font-size: 20px;
+}
+label{
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 24px;
+  font-weight: bold;
+}
+button{
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #D0D3D4;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.2);
+  }
+    input {
+    padding: 10px;
+    border: 1px solid #000;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    font-weight: bold;
+    width: 200px;
+    transition: background-color 0.3s;
+  }
+
+  input:hover {
+    background-color: rgba(255, 255, 255, 1);
+  }
+  a{
+    color: #FF0000;
+    font-size: 40px;
+  }
+  a:hover {
+    font-size: 45px;
+  }

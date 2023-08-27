@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" media="all" href="styleCode.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik:wght@300&display=swap" rel="stylesheet">
+<title>Conjetura de Collatz</title>
+<script>
+  function calcularConjetura() {
+    var numero = parseInt(document.getElementById("numero").value);
+    var resultado = document.getElementById("resultado");
+    var desarrollo = document.getElementById("desarrollo");
+
+    if (isNaN(numero) || numero <= 0) {
+      resultado.innerHTML = "Ingresa un número válido mayor que 0.";
+      desarrollo.innerHTML = "";
+      return;
+    }
+
+    var pasos = [];
+    var steps = 0;
+
+    while (numero !== 1) {
+      if (numero % 2 === 0) {
+        numero /= 2;
+      } else {
+        numero = numero * 3 + 1;
+      }
+      steps++;
+      pasos.push("Paso " + steps + ": " + numero);
+    }
+
+    resultado.innerHTML = "El número de pasos requeridos es: " + steps;
+    desarrollo.innerHTML = "Desarrollo paso a paso:<br>" + pasos.join("<br>");
+  }
+</script>
+</head>
+<body>
+<h1>Conjetura de Collatz</h1>
+<p>Ingresa un número y calcularemos cuántos pasos son necesarios para llegar a 1 utilizando la conjetura de Collatz y mostraremos el desarrollo.</p>
+<label for="numero">Número: </label>
+<input type="text" id="numero" name="numero">
+<button onclick="calcularConjetura()">Calcular</button>
+<p id="resultado"></p>
+<p id="desarrollo"></p>
+<footer>
+  <a id="atras" href="index.html">&#x2302;</a>
+</footer>
+</body>
+</html>

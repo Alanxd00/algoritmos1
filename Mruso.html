@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<link rel="stylesheet" media="all" href="styleCode.css" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Rubik:wght@300&display=swap" rel="stylesheet">
+<title>Método Ruso de Multiplicación</title>
+<script>
+  function resolverMultiplicacionRusa() {
+    var multiplicando = parseInt(document.getElementById("multiplicando").value);
+    var multiplicador = parseInt(document.getElementById("multiplicador").value);
+    var resultado = document.getElementById("resultado");
+    var proceso = document.getElementById("proceso");
+
+    if (isNaN(multiplicando) || isNaN(multiplicador)) {
+      resultado.innerHTML = "Ingresa números válidos.";
+      return;
+    }
+
+    var pasos = [];
+    var producto = 0;
+
+    while (multiplicador > 0) {
+      pasos.push(multiplicando + " x " + multiplicador + " = " + producto);
+      if (multiplicador % 2 !== 0) {
+        producto += multiplicando;
+      }
+      multiplicando *= 2;
+      multiplicador = Math.floor(multiplicador / 2);
+    }
+
+    pasos.push(multiplicando + " x " + multiplicador + " = " + producto);
+
+    resultado.innerHTML = "El resultado es: " + producto;
+    proceso.innerHTML = "Proceso paso a paso:<br>" + pasos.join("<br>");
+  }
+</script>
+</head>
+<body>
+<h1>Método Ruso de Multiplicación</h1>
+<p>Ingresa dos números y utilizaremos el método ruso de multiplicación para calcular su producto y mostrar el proceso.</p>
+<label for="multiplicando">Multiplicando: </label>
+<input type="text" id="multiplicando" name="multiplicando">
+<br>
+<label for="multiplicador">Multiplicador: </label>
+<input type="text" id="multiplicador" name="multiplicador">
+<br>
+<button onclick="resolverMultiplicacionRusa()">Calcular</button>
+<p id="resultado"></p>
+<p id="proceso"></p>
+<footer><a href="index.html">&#x2302;</a></footer>
+</body>
+</html>
